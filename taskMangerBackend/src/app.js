@@ -8,6 +8,7 @@ app.use(cors({
   origin: process.env.ALLOW_URL,
   credentials: true, 
   methods: ['GET', 'POST','PATCH','DELETE'],
+  sameSite: 'Lax',
   optionsSuccessStatus: 200
 }));
 
