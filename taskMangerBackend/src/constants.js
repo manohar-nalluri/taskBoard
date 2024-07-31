@@ -8,7 +8,7 @@ export const accessCookieOptions = {
 export const refreshCookieOption = {
   maxAge:1000 * 60 * 1440 * 10,
   httpOnly:true,
-  sameSite: 'None',
+  sameSite: 'Lax',
   secure:true
 }
 
