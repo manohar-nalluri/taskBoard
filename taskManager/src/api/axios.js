@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL:"http://localhost:8000/api/v1/"
+  baseURL:"https://squid-app-2qrmy.ondigitalocean.app/api/v1/"
 })
