@@ -17,7 +17,7 @@ const DashBoard = () => {
   },[])
 
   useEffect(()=>{
-    if(!isLoading && userName!=null){
+    if(!isLoading ){
       if(userName==null){
         navigate('/login')
       }else{
