@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { addActivity, updateActivity } from '../store/activitySlice'
+import { addActivity, editActivity } from '../store/activitySlice'
 import { IoIosClose } from "react-icons/io";
 
 const EditTask = () => {
@@ -22,7 +22,8 @@ const EditTask = () => {
       return
     }
     if(task._id){
-      dispatch(updateActivity({id:task._id,title,status,priority,deadline:'',description}))
+      dispatch(editActivity({id:task._id,title,status,priority,deadline:'',description}))
+      
     }else{
       console.log(description)
     dispatch(addActivity({title,status,priority,deadline:'',description})) 
