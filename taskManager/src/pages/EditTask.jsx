@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { addActivity } from '../store/activitySlice'
+import { addActivity, updateActivity } from '../store/activitySlice'
 import { IoIosClose } from "react-icons/io";
 
 const EditTask = () => {
@@ -12,6 +12,7 @@ const EditTask = () => {
   const [status,setStatus]=useState(task.status||"")
   const [priority,setPriority]=useState(task.priority||"None")
   const navigator=useNavigate()
+  
  
 
   const dispatch=useDispatch()
