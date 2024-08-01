@@ -55,6 +55,18 @@ export const fetchActivity=createAsyncThunk(
   }
 )
 
+export const editActivity=createAsyncThunk(
+  'activity/edit',
+  async({id,title,status,priority,deadline,description})=>{
+    try{
+      const response=await axios.patch(`activity/${id}`,{title,status,priority,deadline,description},{headers,withCredentials:true})
+      return response.data
+    }catch(err){
+      throw err.response.data
+    }
+  }
+)
+
 export const updateStatusActivity=createAsyncThunk(
   'activity/updateStatus',
   async({id})=>{

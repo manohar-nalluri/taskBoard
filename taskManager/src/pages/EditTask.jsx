@@ -21,11 +21,14 @@ const EditTask = () => {
       return
     }
     if(task._id){
-      dispatch()
+      dispatch(updateActivity({id:task._id,title,status,priority,deadline:'',description}))
     }else{
       console.log(description)
     dispatch(addActivity({title,status,priority,deadline:'',description})) 
     }
+    setTimeout(()=>{
+      navigator('/')
+    },1000)
     
   }
   const handleClose=()=>{

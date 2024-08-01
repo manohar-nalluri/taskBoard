@@ -7,7 +7,7 @@ const router=express.Router()
 router.post('/new',verifyAuth,createActivity)
 router.get('/',verifyAuth,getActivities)
 router.delete('/:id',verifyAuth,deleteActivity)
-router.patch('/edit/:id',verifyAuth,editActivity)
+router.patch('/:id',verifyAuth,editActivity)
 router.patch('/changestatus/:id',verifyAuth,changeStatus)
 
 

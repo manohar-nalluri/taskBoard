@@ -26,11 +26,11 @@ const TimeCalculator = ({time}) => {
   if (interval >= 1) {
     return `${interval} minute${interval === 1 ? '' : 's'} ago`;
   }
-  return `${diffInSeconds} second${diffInSeconds === 1 ? '' : 's'} ago`;
+  return `1 minute ago`;
 }
   const timeStr=timeAgo(time)
   return (
-    <span>{timeStr} ago</span>
+    <span>{timeStr}</span>
   )
 }
 
