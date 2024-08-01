@@ -2,6 +2,12 @@ import { createAsyncThunk, createSlice, current,  } from "@reduxjs/toolkit";
 import axios from "../api/axios";
 
 const arr=["To do","In Progress","Under Review","Completed"]
+const user=JSON.parse(localStorage.getItem('user'))
+const token=user.accessToken||""
+const headers= {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  }
 const initialState = {
   isLoading:false,
     'To do':[],
@@ -14,7 +20,7 @@ export const addActivity=createAsyncThunk(
   'activity/add',
   async({title,status,priority,deadline,description})=>{
     try{
-    const response=await axios.post('activity/new',{title,status,priority,deadline,description},{headers:{'Content-Type':'application/json'},withCredentials:true})
+    const response=await axios.post('activity/new',{title,status,priority,deadline,description},{headers,withCredentials:true})
     }catch(err){
       throw err.response.data
     }
@@ -25,7 +31,7 @@ export const deleteActivity=createAsyncThunk(
   'activity/delete',
   async({id})=>{
     try{
-      const response=await axios.delete(`activity/${id}`,{headers:{'Content-Type':'application/json'},withCredentials:true})
+      const response=await axios.delete(`activity/${id}`,{headers,withCredentials:true})
       return response.data
     }catch(err){
       console.log('error',err)
@@ -39,7 +45,7 @@ export const fetchActivity=createAsyncThunk(
   async()=>{
     try{
       console.log('fetching data')
-      const response=await axios.get('activity/',{headers:{'Content-Type':'application/json'},withCredentials:true})
+      const response=await axios.get('activity/',{headers,withCredentials:true})
       return response.data
       
     }catch(err){
@@ -60,7 +66,7 @@ export const updateStatusActivity=createAsyncThunk(
           item=temp
         }
       })
-      const response=await axios.patch(`activity/changestatus/${id}`,{status:item.status},{headers:{'Content-Type':'application/json'},withCredentials:true})
+      const response=await axios.patch(`activity/changestatus/${id}`,{status:item.status},{headers,withCredentials:true})
       console.log(response.data)
       return response.data
     }catch(err){
@@ -111,7 +117,6 @@ export const activitySlice = createSlice({
     .addCase(fetchActivity.fulfilled,(state,action)=>{
         state.isLoading=false
         state["To do"]=action.payload.data.todo["To do"]
-        console.log(action.payload.data.todo["In Progress"])
         state["In Progress"]=action.payload.data.todo["In Progress"]
         state["Under Review"]=action.payload.data.todo["Under Review"]
         state["Completed"]=action.payload.data.todo["Completed"]
