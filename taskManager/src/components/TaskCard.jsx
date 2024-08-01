@@ -8,9 +8,9 @@ import { BiEdit } from "react-icons/bi";
 import { useNavigate } from 'react-router-dom';
 import { MdDelete } from "react-icons/md";
 import { deleteActivity,  } from '../store/activitySlice';
+import TimeCalcuator from '../utils/TimeCalculator.jsx';
 
 const TaskCard = ({task}) => {
-  let movingItem=useSelector((state)=>state.dragNDrop.movingItem)
   const dispatch=useDispatch()
   const navigator=useNavigate()
   const handleEdit=()=>{
@@ -46,10 +46,10 @@ const TaskCard = ({task}) => {
         <p className='ml-2'>{task.deadline}</p>
       </div>}
       <div className='flex items-center mt-2 mx-2 justify-between'>
-        1hr ago
+        <TimeCalcuator time={task.createdAt}/>
         <div className="flex">
         <BiEdit className="w-5 h-5 mx-2 hover:cursor-pointer" onClick={handleEdit}/>
-        <MdDelete className="text-red-500 w-5 h-5 hover:cursor-pointer" onClick={handleDelete}/>
+        {/* <MdDelete className="text-red-500 w-5 h-5 hover:cursor-pointer" onClick={handleDelete}/> */}
         </div>
       </div>
       {/* <timeCalcuator/> */}

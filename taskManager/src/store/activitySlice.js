@@ -3,7 +3,7 @@ import axios from "../api/axios";
 
 const arr=["To do","In Progress","Under Review","Completed"]
 const user=JSON.parse(localStorage.getItem('user'))
-const token=user.accessToken||""
+const token=user&&(user.accessToken||"")
 const headers= {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${token}`
