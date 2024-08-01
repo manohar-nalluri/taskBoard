@@ -3,13 +3,15 @@ export const accessCookieOptions = {
         httpOnly: true, 
         // signed: true,
         sameSite: 'None',
-        secure:true
+        secure:true,
+        domain:".ondigitalocean.app"
     }
 export const refreshCookieOption = {
   maxAge:1000 * 60 * 1440 * 10,
   httpOnly:true,
-  sameSite: 'Lax',
-  secure:true
+  sameSite: 'None',
+  secure:true,
+  domain:".ondigitalocean.app"
 }
 
 export const status=Object.freeze({
